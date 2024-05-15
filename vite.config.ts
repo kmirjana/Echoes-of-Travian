@@ -1,8 +1,8 @@
 import path from 'node:path';
 import react from '@vitejs/plugin-react';
-import { defineConfig, type UserConfig } from 'vite';
-import svgrPlugin from 'vite-plugin-svgr';
 import viteTsconfigPaths from 'vite-tsconfig-paths';
+import svgrPlugin from 'vite-plugin-svgr';
+import { defineConfig ,type UserConfig} from 'vite';
 
 // https://vitejs.dev/config/
 export default defineConfig({

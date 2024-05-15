@@ -1,5 +1,6 @@
 import { npcVillageFactory, userVillageFactory } from 'app/factories/village-factory';
 import { database } from 'database/database';
+
 import type { Player } from 'interfaces/models/game/player';
 import type { Server } from 'interfaces/models/game/server';
 import type { OccupiedOccupiableTile } from 'interfaces/models/game/tile';

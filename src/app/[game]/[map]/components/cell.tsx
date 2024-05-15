@@ -1,7 +1,9 @@
 import { OccupiableOasisIcon } from 'app/[game]/[map]/components/occupiable-oasis-icon';
+
 import { TreasureIcon } from 'app/[game]/[map]/components/treasure-icon';
 import { WheatFieldIcon } from 'app/[game]/[map]/components/wheat-field-icon';
 import { reputationColorMap } from 'app/[game]/utils/color-maps';
+
 import {
   isOasisTile,
   isOccupiableOasisTile,

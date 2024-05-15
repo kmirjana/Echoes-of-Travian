@@ -1,5 +1,8 @@
 import { isOccupiableOasisTile, isOccupiedOccupiableTile } from 'app/[game]/utils/guards/map-guards';
+
 import { seededRandomArrayElement, seededRandomArrayElements, seededRandomIntFromInterval, seededShuffleArray } from 'app/utils/common';
+
+
 import type { Point } from 'interfaces/models/common';
 import type { Player } from 'interfaces/models/game/player';
 import type { Resource, ResourceCombination } from 'interfaces/models/game/resource';
@@ -18,6 +21,7 @@ import type {
   Tile,
 } from 'interfaces/models/game/tile';
 import type { ResourceFieldComposition } from 'interfaces/models/game/village';
+import { xxHash32 } from 'js-xxhash';
 
 export type OasisShapes = Record<Resource, Array<{ group: number; shape: number[] }>>;
 

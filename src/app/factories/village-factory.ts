@@ -7,7 +7,7 @@ import {
 } from 'assets/village-presets';
 import type { BuildingId } from 'interfaces/models/game/building';
 import type { Player } from 'interfaces/models/game/player';
-import type { Resource, Resources } from 'interfaces/models/game/resource';
+import type { Resource } from 'interfaces/models/game/resource';
 import type { Server } from 'interfaces/models/game/server';
 import type { OccupiedOccupiableTile } from 'interfaces/models/game/tile';
 import type { Tribe } from 'interfaces/models/game/tribe';
