@@ -12,7 +12,6 @@ Using browser's native IndexedDb, game data is persisted and progressed between 
 
 **Note: Very much still work in progress, not much to see at the moment.**
 
-
 ## Game design differences between Travian and Echoes of Travian
 
 - Smithy upgrades are account-wide. Upgrading units in one village will upgrade them globally.
