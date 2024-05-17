@@ -75,7 +75,7 @@ const ResourceCounter: React.FC<ResourceCounterProps> = ({ resource }) => {
 };
 
 export const DesktopNavigation = () => {
-  const { villagePath, reportsPath, mapPath, resourcesPath, auctionsPath } = useGameNavigation();
+  const { villagePath, reportsPath, mapPath, resourcesPath, auctionsPath} = useGameNavigation();
 
   return (
     <header className="fixed left-0 top-0 z-10 flex h-24 w-full">
