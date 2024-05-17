@@ -14,6 +14,8 @@ import { GrResources } from 'react-icons/gr';
 import { LuScrollText } from 'react-icons/lu';
 import { RiAuctionLine } from 'react-icons/ri';
 import { useCurrentResources } from 'app/[game]/hooks/use-current-resources';
+import { IoExit } from 'react-icons/io5';
+import { IoMdOptions } from 'react-icons/io';
 
 type ResourceCounterProps = {
   resource: Resource;
@@ -71,56 +73,70 @@ const ResourceCounter: React.FC<ResourceCounterProps> = ({ resource }) => {
 };
 
 export const DesktopNavigation = () => {
-  const { villagePath, reportsPath, mapPath, resourcesPath, auctionsPath } = useGameNavigation();
+  const { villagePath, reportsPath, mapPath, resourcesPath, auctionsPath, optionsPath, exitPath } = useGameNavigation();
 
   return (
     <header className="fixed left-0 top-0 z-10 flex h-24 w-full">
-      <div className="absolute z-[-1] h-10 w-full bg-gradient-to-r from-[#F4F4F4] via-[#8E8E8E] to-[#F4F4F4]" />
-      <div className="container mx-auto flex justify-between">
-        <div className="flex flex-1" />
-        <div className="flex flex-1 bg-[#A59380]">
-          <div className="w-30 flex h-24 border border-red-500">Hero placeholder</div>
-          <div className="flex w-full flex-col p-2">
-            <div className="flex w-full flex-[2] justify-between">
-              <div className="flex flex-1 items-center justify-center">
-                <Link to={resourcesPath}>
-                  <GiWheat className="text-2xl text-white" />
-                </Link>
-              </div>
-              <div className="flex flex-1 items-center justify-center">
-                <Link to={villagePath}>
-                  <MdOutlineHolidayVillage className="text-2xl text-white" />
-                </Link>
-              </div>
-              <div className="flex flex-1 items-center justify-center">
-                <Link to={mapPath}>
-                  <GrResources className="text-2xl text-white" />
-                </Link>
-              </div>
-              <div className="flex flex-1 items-center justify-center">
-                <Link to={reportsPath}>
-                  <LuScrollText className="text-2xl text-white" />
-                </Link>
-              </div>
-              <div className="flex flex-1 items-center justify-center">
-                <Link to={auctionsPath}>
-                  <RiAuctionLine className="text-2xl text-white" />
-                </Link>
-              </div>
-            </div>
-            <div className="flex flex-1 gap-1">
-              {(['wood', 'clay', 'iron', 'wheat'] as Resource[]).map((resource: Resource) => (
-                <div
-                  key={resource}
-                  className="flex flex-1"
-                >
-                  <ResourceCounter resource={resource} />
+      <div className="absolute z-[-1] h-10 w-full bg-[#73645a]" />
+
+      <div className="container space-x-9 flex mx-auto justify-between">
+        <div className="w-28 h-16 bg-[#dbceba]  mt-2 flex rounded-lg "></div>
+        <div className="flex flex-4">
+          <div className="relative flex-grow flex-1 bg-[#A59380] mt-3 mr-5 pl-10 rounded-lg">
+            <div
+              className="absolute flex w-24 max-h-24 md:w-20 md:h-20  mt-2 bg-[#dbceba] border-[#decdb1] rounded-full"
+              style={{ left: '-45px' }}
+            ></div>
+
+            <div className="flex w-full flex-col  md:px-1">
+              <div className="flex w-full flex-[2] justify-between">
+                <div className="flex flex-1 items-center justify-center">
+                  <Link to={resourcesPath}>
+                    <GiWheat className="text-2xl text-white" />
+                  </Link>
                 </div>
-              ))}
+                <div className="flex flex-1 items-center justify-center">
+                  <Link to={villagePath}>
+                    <MdOutlineHolidayVillage className="text-2xl text-white" />
+                  </Link>
+                </div>
+                <div className="flex flex-1 items-center justify-center">
+                  <Link to={mapPath}>
+                    <GrResources className="text-2xl text-white" />
+                  </Link>
+                </div>
+                <div className="flex flex-1 items-center justify-center">
+                  <Link to={reportsPath}>
+                    <LuScrollText className="text-2xl text-white" />
+                  </Link>
+                </div>
+                <div className="flex flex-1 items-center justify-center">
+                  <Link to={auctionsPath}>
+                    <RiAuctionLine className="text-2xl text-white" />
+                  </Link>
+                </div>
+              </div>
+              <div className="flex flex-1 gap-1">
+                {(['wood', 'clay', 'iron', 'wheat'] as Resource[]).map((resource: Resource) => (
+                  <div
+                    key={resource}
+                    className="flex flex-1"
+                  >
+                    <ResourceCounter resource={resource} />
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
-        <div className="flex flex-1" />
+        <div className="flex flex-2 space-x-4 justify-end text-gray-600">
+          <Link to={optionsPath}>
+            <IoMdOptions className="min-w-10 h-10 md:min-w-8 md:h-8 bg-[#d1d1d1] ml-2 md:mt-1 rounded-full p-2 cursor-pointer" />
+          </Link>
+          <Link to={exitPath}>
+            <IoExit className="min-w-10 h-10 md:min-w-8 md:h-8 md:mt-1 bg-[#d1d1d1] ml-2 rounded-full p-2 cursor-pointer" />
+          </Link>
+        </div>
       </div>
     </header>
   );

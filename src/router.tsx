@@ -1,7 +1,9 @@
 import React, { lazy } from 'react';
-import { createBrowserRouter, createRoutesFromElements, Route } from 'react-router-dom';
+import { createBrowserRouter, createRoutesFromElements, Route, Routes } from 'react-router-dom';
 import { gameLoader } from 'app/[game]/loader';
 import { AppLayout } from 'app/layout';
+import ExitPage from 'app/[game]/components/Exit';
+import OptionsPage from 'app/[game]/components/Options';
 
 const PublicLayout = lazy(async () => ({ default: (await import('app/[public]/layout')).PublicLayout }));
 const HomePage = lazy(async () => ({ default: (await import('app/[public]/[index]/page')).HomePage }));
@@ -37,50 +39,65 @@ export const router = createBrowserRouter(
         loader={gameLoader}
         errorElement={<GameErrorBoundary />}
       >
-        <Route element={<GameLayout />}>
-          <Route path="resources">
-            <Route
-              index
-              element={<VillagePage />}
-            />
-            <Route
-              path=":buildingFieldId"
-              element={<BuildingPage />}
-            />
-          </Route>
-          <Route path="village">
-            <Route
-              index
-              element={<VillagePage />}
-            />
-            <Route
-              path=":buildingFieldId"
-              element={<BuildingPage />}
-            />
-          </Route>
-          <Route path="reports">
-            <Route
-              index
-              element={<ReportsPage />}
-            />
-            <Route
-              path=":reportId"
-              element={<ReportPage />}
-            />
-          </Route>
+        <Route
+          path="/game/:serverSlug/:villageSlug/resources"
+          element={<GameLayout />}
+        ></Route>
+
+        <Route
+          path="resources"
+          element={<GameLayout />}
+        >
           <Route
-            path="auctions"
-            element={<AuctionsPage />}
+            path="options"
+            element={<OptionsPage />}
           />
           <Route
-            path="map"
-            element={
-              <MapProvider>
-                <MapPage />
-              </MapProvider>
-            }
+            path="exit"
+            element={<ExitPage />}
+          />
+          <Route />
+          <Route
+            index
+            element={<VillagePage />}
+          />
+          <Route
+            path=":buildingFieldId"
+            element={<BuildingPage />}
           />
         </Route>
+        <Route path="village">
+          <Route
+            index
+            element={<VillagePage />}
+          />
+          <Route
+            path=":buildingFieldId"
+            element={<BuildingPage />}
+          />
+        </Route>
+        <Route path="reports">
+          <Route
+            index
+            element={<ReportsPage />}
+          />
+          <Route
+            path=":reportId"
+            element={<ReportPage />}
+          />
+        </Route>
+        <Route
+          path="auctions"
+          element={<AuctionsPage />}
+        />
+        <Route
+          path="map"
+          element={
+            <MapProvider>
+              <MapPage />
+            </MapProvider>
+          }
+        />
       </Route>
     </Route>
   )
