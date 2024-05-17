@@ -81,13 +81,13 @@ export const DesktopNavigation = () => {
       <div className="absolute z-[-1] h-10 w-full bg-[#73645a]" />
 
       <div className="container space-x-9 flex mx-auto justify-between">
-        <div className="w-28 h-16 bg-[#dbceba]  mt-2 flex rounded-lg "></div>
+        <div className="w-28 h-16 bg-[#dbceba]  mt-2 flex rounded-lg " />
         <div className="flex flex-4">
           <div className="relative flex-grow flex-1 bg-[#A59380] mt-3 mr-5 pl-10 rounded-lg">
             <div
               className="absolute flex w-24 max-h-24 md:w-20 md:h-20  mt-2 bg-[#dbceba] border-[#decdb1] rounded-full"
               style={{ left: '-45px' }}
-            ></div>
+            />
 
             <div className="flex w-full flex-col  md:px-1">
               <div className="flex w-full flex-[2] justify-between">
