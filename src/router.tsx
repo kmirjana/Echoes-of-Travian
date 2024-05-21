@@ -1,6 +1,7 @@
 import { ExitPage } from 'app/[game]/components/ExitPage';
 
 import { createBrowserRouter, createRoutesFromElements, Route } from 'react-router-dom';
+import { ExitPage } from 'app/[game]/components/ExitPage';
 import { gameLoader } from 'app/[game]/loader';
 import { AppLayout } from 'app/layout';
 
