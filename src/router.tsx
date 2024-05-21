@@ -1,12 +1,9 @@
-import { ExitPage } from 'app/[game]/components/ExitPage';
-
 import { createBrowserRouter, createRoutesFromElements, Route } from 'react-router-dom';
 import { ExitPage } from 'app/[game]/components/ExitPage';
 import { gameLoader } from 'app/[game]/loader';
 import { AppLayout } from 'app/layout';
 
 import React, { lazy } from 'react';
-
 
 const PublicLayout = lazy(async () => ({ default: (await import('app/[public]/layout')).PublicLayout }));
 const HomePage = lazy(async () => ({ default: (await import('app/[public]/[index]/page')).HomePage }));
