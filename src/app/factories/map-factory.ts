@@ -2,7 +2,6 @@ import { isOccupiableOasisTile, isOccupiedOccupiableTile } from 'app/[game]/util
 
 import { seededRandomArrayElement, seededRandomArrayElements, seededRandomIntFromInterval, seededShuffleArray } from 'app/utils/common';
 
-
 import type { Point } from 'interfaces/models/common';
 import type { Player } from 'interfaces/models/game/player';
 import type { Resource, ResourceCombination } from 'interfaces/models/game/resource';

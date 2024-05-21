@@ -7,9 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "serve": "vite preview",
-    "lint": "npx @biomejs/biome lint --apply .",
-    "format:check": "npx @biomejs/biome format .",
-    "format": "npx @biomejs/biome format --write .",
+
     "lint:check": "npx @biomejs/biome lint .",
     "lint": "npx @biomejs/biome lint --apply .",
     "format:check": "npx @biomejs/biome format .",
