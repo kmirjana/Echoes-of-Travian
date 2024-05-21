@@ -17,6 +17,7 @@ import { RiAuctionLine } from 'react-icons/ri';
 import { Await, Link, Outlet, useRouteLoaderData } from 'react-router-dom';
 import { IoExit } from 'react-icons/io5';
 import { IoMdOptions } from 'react-icons/io';
+import { OptionsPage } from './[options]/page';
 
 type ResourceCounterProps = {
   resource: Resource;
@@ -74,7 +75,7 @@ const ResourceCounter: React.FC<ResourceCounterProps> = ({ resource }) => {
 };
 
 export const DesktopNavigation = () => {
-  const { villagePath, reportsPath, mapPath, resourcesPath, auctionsPath, optionsPath, exitPath } = useGameNavigation();
+  const { villagePath, reportsPath, mapPath, resourcesPath, auctionsPath } = useGameNavigation();
 
   return (
     <header className="fixed left-0 top-0 z-10 flex h-24 w-full">
@@ -131,11 +132,12 @@ export const DesktopNavigation = () => {
           </div>
         </div>
         <div className="flex flex-2 space-x-4 justify-end text-gray-600">
-          <Link to={optionsPath}>
+          <Link to={'/options'}>
             <IoMdOptions className="min-w-10 h-10 md:min-w-8 md:h-8 bg-[#d1d1d1] ml-2 md:mt-1 rounded-full p-2 cursor-pointer" />
           </Link>
-          <Link to={exitPath}>
-            <IoExit className="min-w-10 h-10 md:min-w-8 md:h-8 md:mt-1 bg-[#d1d1d1] ml-2 rounded-full p-2 cursor-pointer" />
+
+          <Link to={'/exit'}>
+            <IoExit className=" exit min-w-10 h-10 md:min-w-8 md:h-8 md:mt-1 bg-[#d1d1d1] ml-2 rounded-full p-2 cursor-pointer" />
           </Link>
         </div>
       </div>

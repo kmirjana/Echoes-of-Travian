@@ -1,13 +1,15 @@
+import { ExitPage } from 'app/[game]/components/ExitPage';
 import { gameLoader } from 'app/[game]/loader';
 import { AppLayout } from 'app/layout';
-import ExitPage from 'app/[game]/components/Exit';
-import OptionsPage from 'app/[game]/components/Options';
+
 import React, { lazy } from 'react';
 import { Route, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
 
 const PublicLayout = lazy(async () => ({ default: (await import('app/[public]/layout')).PublicLayout }));
 const HomePage = lazy(async () => ({ default: (await import('app/[public]/[index]/page')).HomePage }));
 const VillagePage = lazy(async () => ({ default: (await import('app/[game]/[village]/page')).VillagePage }));
+const OptionsPage = lazy(async () => ({ default: (await import('app/[game]/[options]/page')).OptionsPage }));
+
 const BuildingPage = lazy(async () => ({ default: (await import('app/[game]/[village]/[...building-field-id]/page')).BuildingPage }));
 const ReportPage = lazy(async () => ({ default: (await import('app/[game]/[reports]/[...report-id]/page')).ReportPage }));
 const MapPage = lazy(async () => ({ default: (await import('app/[game]/[map]/page')).MapPage }));
@@ -41,9 +43,14 @@ export const router = createBrowserRouter(
       >
         <Route element={<GameLayout />}>
           <Route path="resources">
+            {/* z */}
             <Route
-              index
-              element={<VillagePage />}
+              path="options"
+              element={<OptionsPage />}
+            />
+            <Route
+              path="exit"
+              element={<ExitPage />}
             />
             <Route
               path=":buildingFieldId"
@@ -73,6 +80,14 @@ export const router = createBrowserRouter(
           <Route
             path="auctions"
             element={<AuctionsPage />}
+          />
+          <Route
+            path="options"
+            element={<OptionsPage />}
+          />
+          <Route
+            path="exit"
+            element={<ExitPage />}
           />
           <Route
             path="map"
