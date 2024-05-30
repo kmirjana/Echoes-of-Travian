@@ -75,7 +75,7 @@ const ResourceCounter: React.FC<ResourceCounterProps> = ({ resource }) => {
 };
 
 export const DesktopNavigation = () => {
-  const { villagePath, reportsPath, mapPath, resourcesPath, auctionsPath } = useGameNavigation();
+  const { villagePath, reportsPath, mapPath, resourcesPath, auctionsPath, optionsPath, exitPath } = useGameNavigation();
 
   return (
     <header className="fixed left-0 top-0 z-10 flex h-24 w-full">
@@ -132,11 +132,11 @@ export const DesktopNavigation = () => {
           </div>
         </div>
         <div className="flex flex-2 space-x-4 justify-end text-gray-600">
-          <Link to={'/options'}>
+          <Link to={optionsPath}>
             <IoMdOptions className="min-w-10 h-10 md:min-w-8 md:h-8 bg-[#d1d1d1] ml-2 md:mt-1 rounded-full p-2 cursor-pointer" />
           </Link>
 
-          <Link to={'/exit'}>
+          <Link to={exitPath}>
             <IoExit className=" exit min-w-10 h-10 md:min-w-8 md:h-8 md:mt-1 bg-[#d1d1d1] ml-2 rounded-full p-2 cursor-pointer" />
           </Link>
         </div>

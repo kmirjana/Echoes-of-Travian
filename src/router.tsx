@@ -57,6 +57,7 @@ export const router = createBrowserRouter(
               element={<BuildingPage />}
             />
           </Route>
+
           <Route path="village">
             <Route
               index
