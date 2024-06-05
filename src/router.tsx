@@ -1,9 +1,10 @@
-import { createBrowserRouter, createRoutesFromElements, Route } from 'react-router-dom';
+import { createBrowserRouter, createRoutesFromElements, Route, Routes } from 'react-router-dom';
 import { ExitPage } from 'app/[game]/components/ExitPage';
 import { gameLoader } from 'app/[game]/loader';
 import { AppLayout } from 'app/layout';
 
 import React, { lazy } from 'react';
+import OptionsModal from 'app/components/OptionsModal';
 
 const PublicLayout = lazy(async () => ({ default: (await import('app/[public]/layout')).PublicLayout }));
 const HomePage = lazy(async () => ({ default: (await import('app/[public]/[index]/page')).HomePage }));
@@ -44,6 +45,7 @@ export const router = createBrowserRouter(
         <Route element={<GameLayout />}>
           <Route path="resources">
             {/* z */}
+
             <Route
               path="options"
               element={<OptionsPage />}
@@ -52,6 +54,7 @@ export const router = createBrowserRouter(
               path="exit"
               element={<ExitPage />}
             />
+
             <Route
               path=":buildingFieldId"
               element={<BuildingPage />}
@@ -82,14 +85,14 @@ export const router = createBrowserRouter(
             path="auctions"
             element={<AuctionsPage />}
           />
-          <Route
+          {/* <Route
             path="options"
             element={<OptionsPage />}
           />
           <Route
             path="exit"
             element={<ExitPage />}
-          />
+          /> */}
           <Route
             path="map"
             element={
