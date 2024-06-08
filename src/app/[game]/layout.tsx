@@ -8,7 +8,7 @@ import { formatNumberWithCommas } from 'app/utils/common';
 import clsx from 'clsx';
 import type { Resource } from 'interfaces/models/game/resource';
 import type React from 'react';
-import { Suspense } from 'react';
+import { Suspense, useState } from 'react';
 import { GiWheat } from 'react-icons/gi';
 import { GrResources } from 'react-icons/gr';
 import { LuScrollText } from 'react-icons/lu';
@@ -17,8 +17,10 @@ import { RiAuctionLine } from 'react-icons/ri';
 import { Await, Link, Outlet, useRouteLoaderData } from 'react-router-dom';
 import { IoExit } from 'react-icons/io5';
 import { IoMdOptions } from 'react-icons/io';
-import { OptionsPage } from './[options]/page';
-import OptionsModal from 'app/components/OptionsModal';
+
+import { OptionsModal } from 'app/components/OptionsModal';
+
+import { CloseButton } from 'app/components/buttons/close-button';
 
 type ResourceCounterProps = {
   resource: Resource;
@@ -77,6 +79,13 @@ const ResourceCounter: React.FC<ResourceCounterProps> = ({ resource }) => {
 
 export const DesktopNavigation = () => {
   const { villagePath, reportsPath, mapPath, resourcesPath, auctionsPath } = useGameNavigation();
+  const [showModal, setShowModal] = useState(false);
+  const handleClose = () => {
+    setShowModal(false);
+  };
+  const handleOpen = () => {
+    setShowModal(true);
+  };
 
   return (
     <header className="fixed left-0 top-0 z-10 flex h-24 w-full">
@@ -133,9 +142,26 @@ export const DesktopNavigation = () => {
           </div>
         </div>
         <div className="flex flex-2 space-x-4 justify-end text-gray-600">
-          <Link to="/options">
-            <IoMdOptions className="min-w-10 h-10 md:min-w-8 md:h-8 bg-[#d1d1d1] ml-2 md:mt-1 rounded-full p-2 cursor-pointer" />
+          <Link to="resources/:modal">
+            <IoMdOptions
+              className="min-w-10 h-10 md:min-w-8 md:h-8 bg-[#d1d1d1] ml-2 md:mt-1 rounded-full p-2 cursor-pointer"
+              onClick={handleOpen}
+            />
           </Link>
+
+          {showModal ? (
+            <OptionsModal>
+              <div className="grid grid-cols-2">
+                <h2 className="text-lg font-medium text-gray-900">Preferences</h2>
+                <CloseButton onClick={handleClose} />
+              </div>
+              <div className="mt-2 text-sm text-gray-500 grid grid-cols-3 grid-rows-1">
+                <div className="ul">tweeter</div>
+                <div className="ul">meta</div>
+                <div className="ul">dark/white theme</div>
+              </div>
+            </OptionsModal>
+          ) : null}
 
           <Link to="/">
             <IoExit className=" exit min-w-10 h-10 md:min-w-8 md:h-8 md:mt-1 bg-[#d1d1d1] ml-2 rounded-full p-2 cursor-pointer" />

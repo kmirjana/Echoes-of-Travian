@@ -5,7 +5,7 @@ export const ExitPage = () => {
     <>
       <div>
         <Link
-          to={'/exit'}
+          to={'/resources/'}
           className="text-center text-2xl font-bold mt-24"
         >
           Exit page

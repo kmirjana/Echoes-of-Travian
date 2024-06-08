@@ -4,12 +4,11 @@ import { gameLoader } from 'app/[game]/loader';
 import { AppLayout } from 'app/layout';
 
 import React, { lazy } from 'react';
-import OptionsModal from 'app/components/OptionsModal';
+import { OptionsModal } from 'app/components/OptionsModal';
 
 const PublicLayout = lazy(async () => ({ default: (await import('app/[public]/layout')).PublicLayout }));
 const HomePage = lazy(async () => ({ default: (await import('app/[public]/[index]/page')).HomePage }));
 const VillagePage = lazy(async () => ({ default: (await import('app/[game]/[village]/page')).VillagePage }));
-const OptionsPage = lazy(async () => ({ default: (await import('app/[game]/[options]/page')).OptionsPage }));
 
 const BuildingPage = lazy(async () => ({ default: (await import('app/[game]/[village]/[...building-field-id]/page')).BuildingPage }));
 const ReportPage = lazy(async () => ({ default: (await import('app/[game]/[reports]/[...report-id]/page')).ReportPage }));
@@ -47,8 +46,8 @@ export const router = createBrowserRouter(
             {/* z */}
 
             <Route
-              path="options"
-              element={<OptionsPage />}
+              path="resources/:modal"
+              element={<OptionsModal />}
             />
             <Route
               path="exit"
