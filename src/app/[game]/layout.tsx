@@ -21,6 +21,10 @@ import { IoMdOptions } from 'react-icons/io';
 import { OptionsModal } from 'app/components/OptionsModal';
 
 import { CloseButton } from 'app/components/buttons/close-button';
+import { useNavbarContext } from 'app/providers/navbar-context';
+import { FaTwitter } from 'react-icons/fa';
+import { FaGithub } from 'react-icons/fa6';
+import ThemeToggle from 'app/components/theme-toggle';
 
 type ResourceCounterProps = {
   resource: Resource;
@@ -80,13 +84,15 @@ const ResourceCounter: React.FC<ResourceCounterProps> = ({ resource }) => {
 export const DesktopNavigation = () => {
   const { villagePath, reportsPath, mapPath, resourcesPath, auctionsPath } = useGameNavigation();
   const [showModal, setShowModal] = useState(false);
+
   const handleClose = () => {
     setShowModal(false);
   };
   const handleOpen = () => {
     setShowModal(true);
   };
-
+  const data = useNavbarContext();
+  console.log(data);
   return (
     <header className="fixed left-0 top-0 z-10 flex h-24 w-full">
       <div className="absolute z-[-1] h-10 w-full bg-[#73645a]" />
@@ -151,14 +157,23 @@ export const DesktopNavigation = () => {
 
           {showModal ? (
             <OptionsModal>
-              <div className="grid grid-cols-2">
-                <h2 className="text-lg font-medium text-gray-900">Preferences</h2>
-                <CloseButton onClick={handleClose} />
+              <div className="grid grid-cols-2 ">
+                <h2 className="text-lg font-medium ">Preferences</h2>
+                <CloseButton
+                  className="text-[#D3BEA2]"
+                  onClick={handleClose}
+                />
               </div>
-              <div className="mt-2 text-sm text-gray-500 grid grid-cols-3 grid-rows-1">
-                <div className="ul">tweeter</div>
-                <div className="ul">meta</div>
-                <div className="ul">dark/white theme</div>
+              <div className="mt-2 text-md grid grid-cols-3 grid-rows-1">
+                <div className="ul cursor-pointer">
+                  <FaTwitter />
+                </div>
+                <div className="ul">
+                  <FaGithub />
+                </div>
+                <div className="ul">
+                  <ThemeToggle />
+                </div>
               </div>
             </OptionsModal>
           ) : null}
